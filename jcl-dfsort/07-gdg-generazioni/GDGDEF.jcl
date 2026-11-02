@@ -1,0 +1,19 @@
+//GDGDEF   JOB (ACCT),'DEFINE GDG',CLASS=A,MSGCLASS=X,
+//             MSGLEVEL=(1,1),NOTIFY=&SYSUID
+//*------------------------------------------------------------
+//* JOB 1 - DEFINIZIONE DELLA BASE GDG USERID.MYGDG.TEST1
+//*  LIMIT(5)  : MASSIMO 5 GENERAZIONI CATALOGATE
+//*  EMPTY     : AL SUPERAMENTO DEL LIMITE SCATALOGA TUTTE
+//*              LE GENERAZIONI PRECEDENTI
+//*              (CON NOEMPTY SAREBBE SOLO LA PIU' VECCHIA)
+//*  NOSCRATCH : LE GENERAZIONI SCATALOGATE RESTANO SUL DISCO
+//*------------------------------------------------------------
+//STEPDEF  EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*
+//SYSIN    DD *
+  DEFINE GDG -
+         (NAME(USERID.MYGDG.TEST1) -
+          LIMIT(5) -
+          EMPTY -
+          NOSCRATCH)
+/*
